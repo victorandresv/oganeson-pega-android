@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Pega</string>
+
+    <string name="login">Conecte-se</string>
+    <string name="email">Correio eletrônico</string>
+    <string name="password">Senha</string>
+    <string name="ok">Aceitar</string>
+    <string name="empty_email">Escreva um email válido</string>
+    <string name="empty_password">Coloque sua senha</string>
 </resources>
