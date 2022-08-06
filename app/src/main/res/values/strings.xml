@@ -7,4 +7,5 @@
     <string name="ok">Aceitar</string>
     <string name="empty_email">Escreva um email válido</string>
     <string name="empty_password">Coloque sua senha</string>
+    <string name="scan_button_description">Digitalizar o código QR de um produto</string>
 </resources>
