@@ -1,16 +1,12 @@
 package br.pega.oganeson;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 import br.pega.oganeson.helpers.DialogHelper;
@@ -40,17 +36,16 @@ public class MainActivity extends AppCompatActivity {
                             .getInstance()
                             .signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())
                             .addOnFailureListener(e -> DialogHelper.Alert(context, "Error", e.getLocalizedMessage()))
-                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-
-                                }
+                            .addOnSuccessListener(authResult -> {
+                                finish();
+                                startActivity(new Intent(context, ProductList.class));
                             });
                 }
             });
 
         } else {
-
+            finish();
+            startActivity(new Intent(context, ProductList.class));
         }
     }
 }
