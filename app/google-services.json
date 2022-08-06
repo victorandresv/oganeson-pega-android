@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "295995011355",
+    "project_id": "oganeson-project",
+    "storage_bucket": "oganeson-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295995011355:android:a8b0612636d05100eae3be",
+        "android_client_info": {
+          "package_name": "br.pega.oganeson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295995011355-5061tmja32sosuumvjhq364bf8a44mmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxPLO_DjHPmsIPNGee3bIl-Afsx9CTXeA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295995011355-5061tmja32sosuumvjhq364bf8a44mmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
