@@ -2,7 +2,6 @@ package br.pega.oganeson;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,11 +33,13 @@ public class ProductList extends AppCompatActivity {
             setContentView(R.layout.activity_product_list);
 
             RecyclerView list = findViewById(R.id.list);
-            productListAdapter = new ProductListAdapter(data, new ProductListAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(Product item) {
-                    Log.e("KIK", item.getName());
-                }
+            productListAdapter = new ProductListAdapter(data, item -> {
+                Intent intent = new Intent(getApplicationContext(), ProductDetail.class);
+                intent.putExtra("FirebaseId", item.getFirebaseId());
+                intent.putExtra("Enabled", item.getEnabled());
+                intent.putExtra("Name", item.getName());
+                intent.putExtra("Sku", item.getSku());
+                startActivity(intent);
             });
             list.setAdapter(productListAdapter);
 
