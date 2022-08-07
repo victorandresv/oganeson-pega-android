@@ -6,6 +6,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +20,16 @@ import br.pega.oganeson.models.Product;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder>{
 
-    private final ArrayList<Product> data;
+    public interface OnItemClickListener {
+        void onItemClick(Product item);
+    }
 
-    public ProductListAdapter(ArrayList<Product> data) {
+    private final ArrayList<Product> data;
+    private final OnItemClickListener listener;
+
+    public ProductListAdapter(ArrayList<Product> data, OnItemClickListener listener) {
         this.data = data;
+        this.listener = listener;
     }
 
     @Override
@@ -39,6 +46,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         byte[] decodedString = Base64.decode(imageString, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         viewHolder.getImage().setImageBitmap(decodedByte);
+
+        viewHolder.bind(data.get(position), listener);
     }
 
     @NonNull
@@ -72,6 +81,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         public ImageView getImage() {
             return image;
+        }
+
+        public void bind(final Product item, final OnItemClickListener listener) {
+            itemView.setOnClickListener(v -> listener.onItemClick(item));
         }
     }
 }

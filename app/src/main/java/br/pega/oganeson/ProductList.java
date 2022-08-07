@@ -2,6 +2,7 @@ package br.pega.oganeson;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,9 +34,13 @@ public class ProductList extends AppCompatActivity {
             setContentView(R.layout.activity_product_list);
 
             RecyclerView list = findViewById(R.id.list);
-            productListAdapter = new ProductListAdapter(data);
+            productListAdapter = new ProductListAdapter(data, new ProductListAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(Product item) {
+                    Log.e("KIK", item.getName());
+                }
+            });
             list.setAdapter(productListAdapter);
-
 
             FirebaseFirestore.getInstance()
                     .collection("products")
